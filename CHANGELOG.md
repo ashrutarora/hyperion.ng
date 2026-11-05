@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - ImageToLedsMap - Pixel index was calculated wrong for images with detected borders (#2023)
   - QHttpServer - Fix memory leak
   - macOS Signal Handler - Exit after a crash instead of hanging at 100% CPU. The stack trace parser assumed the glibc format and faulted on macOS traces
+  - Signal Handler - Write the crash stack trace to the log when stdout is not a terminal, e.g. when running as a service. It stayed in the output buffer and was lost when the process exited
 
 ---
 ### Technical

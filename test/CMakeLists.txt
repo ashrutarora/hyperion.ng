@@ -48,6 +48,9 @@ link_to_hyperion(test_image2ledsmap hyperion-utils)
 if(NOT WIN32)
 	add_executable(test_decipher_trace TestDecipherTrace.cpp)
 	target_link_libraries(test_decipher_trace hyperion-utils)
+
+	add_executable(test_signal_handler_trace TestSignalHandlerTrace.cpp)
+	target_link_libraries(test_signal_handler_trace hyperion-utils)
 endif()
 
 ######### These tests are broken. May they fix someone ##########

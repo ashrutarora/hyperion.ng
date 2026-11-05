@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <iostream>
+
 #include <QCoreApplication>
 
 #ifdef _WIN32
@@ -263,6 +265,9 @@ namespace DefaultSignalHandler {
 		case SIGABRT:
 		case SIGFPE:
 			print_trace();
+			// The log goes to std::cout, which is fully buffered when stdout is not a terminal,
+			// e.g. when running as a service. Flush it, as re-raising the signal skips that.
+			std::cout.flush();
 			install_default_handler(signum);
 			kill(getpid(), signum);
 			return;
